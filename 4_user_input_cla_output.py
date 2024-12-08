@@ -19,6 +19,12 @@
   -> :  = insert a space before positive numbers
   -> :, = comma separator for each thousands place
 - The print functions ends with a newline character by default. To change it, {end=string} is used like print(x, end=" ")
+- The syntax is print(object(s), sep=' ' ,end = '\n', file = file, flush = flush) 
+      -> object(s) 	Any object. Will be converted to a string before printed
+      -> sep 	      (Optional), Specify how to separate the objects, if there is more than one. Default is ' '.
+      -> end	      (Optional), Specify what to print at the end. Default is '\n'.
+      -> file	      (Optional), An object with a write method. Default is sys. stdout
+      -> flush	    (Optional), A Boolean specifies if the output is flushed (True) or buffered (False). Default is False
 '''
 username = input("Enter username: ")
 print("Username is: " + username)
