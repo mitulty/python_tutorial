@@ -26,11 +26,11 @@
       -> file	      (Optional), An object with a write method. Default is sys. stdout
       -> flush	    (Optional), A Boolean specifies if the output is flushed (True) or buffered (False). Default is False
 '''
-username = input("Enter username: ")
-print("Username is: " + username)
+# username = input("Enter username: ")
+# print("Username is: " + username)
 
-accountid = int(input("Enter 4 digit numeric id: ")) # Converting to an integer.
-print("Entered id is: ",accountid)
+# accountid = int(input("Enter 4 digit numeric id: ")) # Converting to an integer.
+# print("Entered id is: ",accountid)
 
 price1 = 3.14159
 price2 = -987.65457

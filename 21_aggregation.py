@@ -8,7 +8,6 @@
   enables the creation of complex objects by combining simpler objects.
 - In Python, objects can be passed as parameters to functions or methods, allowing to manipulate or interact with those objects within the function. When 
   an object is passed as a parameter, the function receives a reference to the object, allowing it to access and modify the object's attributes.
-- 
 '''
 
 class Address:

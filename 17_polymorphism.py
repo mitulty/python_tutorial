@@ -125,7 +125,7 @@ class ShapeCalculator:
     # Calculate the area of shapes
     @staticmethod
     def calculate_area(length, width=-1):        
-        return length*length if width == -1  else length* width
+        return length * length if width == -1  else length * width
 
 
 # Taking input from the user
@@ -260,6 +260,7 @@ class Car(Vehicle):
     def calculate_rental_cost(self, days):
         # Override the method to calculate cost based on seats, days, and rental rate
         return self.seats * days * self.rental_rate
+        # return self.seats * super().calculate_rental_cost(days)
 
 
 # Write your code here
@@ -271,7 +272,7 @@ rental_rate, seats, num_rental_days = (10, 5, 4) # map(int, input().split())
 car = Car(model,rental_rate,seats)
 
 # Calculate and display the rental cost
-print(car.calculate_rental_cost(num_rental_days))
+print("Rental Cost: ",car.calculate_rental_cost(num_rental_days))
 
 class Book:
     def __init__(self, title, author, price):

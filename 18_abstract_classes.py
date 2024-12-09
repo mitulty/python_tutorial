@@ -127,8 +127,8 @@ class Rectangle(Shape):
         return self.length * self.width
 
 
-square_side = int(input())
-rectangle_length, rectangle_width = list(map(int,input().split()))
+square_side = 35 # int(input())
+rectangle_length, rectangle_width = 13, 56 #list(map(int,input().split()))
 
 # Create a Square with a side length
 square = Square(square_side)

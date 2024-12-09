@@ -60,12 +60,13 @@ class School:
         print(self.school_name)
         self.student.display()
 
-
+## Creating an inner/nested class object from the outter class
 student = School.Student("Alice")
 school = School("ABC School", student)
 
 school.display_school_info()
 
+## Methods returning objects.
 class Complex:
     def __init__(self, real, imaginary):
         self.real = real
@@ -148,13 +149,16 @@ class Student:
 
 
 # Take inputs
-name, course_name = input().split()
+name, course_name = "Alice", "Geology" #input().split()
 
 # Create a student and a course
 student = Student(name, course_name)
 course = student.Course()
+course_another = Student.Course()
 # Display student's name and course name
 student.display()
+course.display() # A new object created.
+course_another.display() 
 
 class Calculator:
     # Constructor to initialize the result to zero
@@ -181,7 +185,7 @@ class Calculator:
 calc_a = Calculator()
 calc_b = Calculator()
 
-value_a, value_b = list(map(int,input().split()))
+value_a, value_b = 12, 13 #list(map(int,input().split()))
 
 calc_a.set_result(value_a)
 calc_b.set_result(value_b)

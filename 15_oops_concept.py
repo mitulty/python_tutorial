@@ -80,15 +80,17 @@
 - All classes have a function called __init__(), which is always executed when the class is being initiated.
 - The __str__() method controls what should be returned when the class object is represented as a string. If the __str__() function is not set,
   the string representation of the object is returned.
-
+- The __del__() method is a known as a destructor method in Python. It is called when all references to the object have been deleted i.e when an 
+  object is garbage collected. 
+- The __dict__() methods gives the information about the attributes and methods of a class or an object.
 '''
 
 class Employee:
-    country = "India"
-    count = 0
+    country = "India" # static variables/ class attributes
+    count = 0 # static variables/ class attributes
     def __init__(self, name, age):
-        self.name =  name
-        self.age = age
+        self.name =  name # instance attributes
+        self.age = age # instance attributes
         Employee.count +=1
         
   # Instance method
@@ -108,7 +110,7 @@ print(employ1.from_country())
 print(Employee.description(employ1))
 
 employ1.country = "Japan" # This creates a new instance attribute for employ1
-Employee.country = "China" # This changes the country for all the instances to Chine
+Employee.country = "China" # This changes the country for all the instances to China
 print(employ1.__dict__)
 print(Employee.__dict__)
 
@@ -171,8 +173,6 @@ class BankAccount :
         print(f"Account Holder: {BankAccount.__accountHolder}");
         print(f"Balance: ${BankAccount.__balance}"); 
 
-
-# Write your code here
 # Create a BankAccount object
 account = BankAccount(12345, 'John Doe')
 
@@ -197,6 +197,9 @@ class Counter:
     # Getter Function
     def getCount(self): 
         return self.__count
+    @classmethod
+    def print_class_attr(cls):
+      print(cls.__count)
         
 c1 = Counter(5)
 c2 = c1 # Both c1 and c2 reference the same Counter object.
@@ -204,6 +207,7 @@ c2 = c1 # Both c1 and c2 reference the same Counter object.
 c1.increment()
 
 print(c2.getCount())
+Counter.print_class_attr()
 
 class Rectangle:
     def __init__(self):
@@ -232,7 +236,8 @@ class MyClass:
 
     # Copy constructor
     def __copy__(self):
-        new_object = type(self)(self.attribute1, self.attribute2)
+        # new_object = type(self)(self.attribute1, self.attribute2) # This will also work
+        new_object = MyClass(self.attribute1,self.attribute2)
         return new_object
 
 # Creating an object of MyClass
@@ -247,7 +252,9 @@ print("Copied Object: attribute1={}, attribute2={}".format(copied_obj.attribute1
 
 class MyClass:
     static_variable = 0
-
+    # These will not work
+    # __static_variable = 0
+    # _static_variable = 0
     def __init__(self, value):
         self.value = value
         MyClass.static_variable += 1
@@ -317,6 +324,7 @@ c2 = Circle(5.0)
 print("The area of circle c2 is", c2.get_area())
 
 ### Methods in Python Classes.
+# instance methods
 class Cricket:
     teamName = None
 
@@ -330,6 +338,7 @@ c = Cricket()
 c.setTeamName('India')
 print(c.getTeamName())
 
+# class method
 class Cricket:
   teamName = 'India'
 
@@ -337,6 +346,12 @@ class Cricket:
   def getTeamName(cls):
     return cls.teamName
 
+c = Cricket()
+print("Class Method using object: ",c.getTeamName())
+print("Class Method using class: ",Cricket.getTeamName())
+# print("Class Method using class: ",Cricket.getTeamName(c)) ## error
+
+# static method
 class Cricket:
     teamName = 'India'  
 
@@ -348,6 +363,45 @@ c1 = Cricket()
 c1.utility()
 
 Cricket.utility()
+
+# Python program to illustrate destructor
+class Employee:
+
+    # Initializing
+    def __init__(self):
+        print('Employee created.')
+
+    # Deleting (Calling destructor)
+    def __del__(self):
+        print('Destructor called, Employee deleted.')
+
+obj = Employee()
+del obj
+
+class RecursiveFunction:
+    def __init__(self, n):
+        self.n = n
+        print("Recursive function initialized with n =", n)
+
+    def run(self, n=None):
+        if n is None:
+            n = self.n
+        if n <= 0:
+            return
+        print("Running recursive function with n =", n)
+        self.run(n-1)
+
+    def __del__(self):
+        print("Recursive function object destroyed")
+
+# Create an object of the class
+obj = RecursiveFunction(5)
+
+# Call the recursive function
+obj.run()
+
+# Destroy the object
+del obj
 
 def main():
     print("Hello, World!")

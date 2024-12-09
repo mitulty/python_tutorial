@@ -85,8 +85,8 @@ class Worker(Employee):
 
 
 # take input
-name = input()
-hourly_rate = int(input())
+name = "Jim" #input()
+hourly_rate = 28 #int(input())
 
 
 # Create object of Worker class
