@@ -2,7 +2,20 @@
 # @Author: Mitul Tyagi
 # @Date:   2024-12-14 03:09:18
 # @Decription: Hash Set
-
+'''
+- Similar to hash table, a hash set is also a collection of objects. In hash table, data was stored in the form of key-value pairs, whereas in hash sets,
+  the data is stored as objects. A hash set internally uses the hash table data structure to store data items. Just like a set, a hash set also does not 
+  allow storage of duplicate elements.
+- In Python, sets are implemented using a hash table data structure. This allows for efficient membership testing (checking if an element is present in 
+  the set) and insertion/deletion of elements.
+- Key points about Python set implementation:
+    -> Hash Table: The underlying data structure is a hash table, which maps each element in the set to a specific bucket based on its hash value.
+    -> Unique Elements: Sets only store unique elements. If you try to add an element that is already present, it won't be added again.
+    -> Unordered: Sets don't maintain any specific order of elements.
+    -> Average Case O(1) Time Complexity: Due to the hash table implementation, operations like adding, removing, and checking membership have an average 
+                                          time complexity of O(1).
+    -> Worst Case O(n) Time Complexity: In rare cases, if there are many hash collisions, the performance can degrade to O(n) time complexity.
+'''
 class SimpleHashSet:
     def __init__(self, size=100):
         self.size = size

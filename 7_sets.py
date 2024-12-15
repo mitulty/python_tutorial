@@ -42,11 +42,11 @@
 - The intersection() method will return a new set, that only contains the items that are present in both sets. The & operator can also be used instead of the 
   intersection() method. The & operator only allows you to join sets with sets, and not with other data types like the intersection() method can.
 
-- The intersection_update() method will also keep ONLY the duplicates, but it will change the original set instead of returning a new set.
+- The intersection_update() method will keep ONLY the duplicates, but it will change the original set instead of returning a new set.
 
 - The difference() method will return a new set that will contain only the items from the first set that are not present in the other set. The - operator can be used 
   instead of the difference() method. The - operator only allows you to join sets with sets, and not with other data types like the difference() method can.
-- The difference_update() method will also keep the items from the first set that are not in the other set, but it will change the original set instead of returning 
+- The difference_update() method will  keep the items from the first set that are not in the other set, but it will change the original set instead of returning 
   a new set.
 
 - The symmetric_difference() method will keep only the elements that are NOT present in both sets. The ^ operator can be used instead of the symmetric_difference() 
