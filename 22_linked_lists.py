@@ -39,6 +39,12 @@
 - Circular linked lists are a specialized form of linked list where the last node points back to the first node, creating a circular structure. This means 
   that, unlike the singly and doubly linked lists the circular linked list does not end; instead, it loops around.
 
+- Access (retrieving the n-th node): Linear — O(n)
+- Search (retrieving a specified node): Linear — O(n)
+- Insertion (adding a node to the list at the front): Constant — O(1)
+- Deletion (removing a specified node at the front): Constant — O(1)
+- Insertion (adding a node to the list at the end with no tail): Constant — O(n)
+- Deletion (removing a specified node at the end with no tail): Constant — O(n)
 
 '''
 class Node:
@@ -52,14 +58,14 @@ class Node:
 class Linked_List:
     
     def __init__(self) -> None:
-        self.head = Node("head") # Creating a head node which is a place holder for the first node.
+        self.head = Node("head") # Creating a head node which is the place holder for the first node.
         self.size = 0
     
     def apppend(self, data):
         new_node = Node(data)
         cur = self.head
         self.size +=1
-        while cur.next !=None:
+        while cur.next != None:
             cur = cur.next
         cur.next = new_node
     

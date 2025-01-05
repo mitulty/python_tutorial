@@ -58,22 +58,59 @@
 
 - The issuperset() method returns True if all items in the specified set exists in the original set, otherwise it returns False. The >= operator instead can be used.
 - >= returns whether this set contains another set or not. 	> returns whether all items in other, specified set(s) is present in this set.
+-
+  |-------------------|---------------------|---------------------------|
+  |   Operation       |    Average Case     |    Amortised Worst Case   |
+  |-------------------|---------------------|---------------------------|
+  |     Add           |       O(1)          |       O(1)                |
+  |-------------------|---------------------|---------------------------|
+  |     Remove        |       O(1)          |       O(1)/O(N)           |
+  |-------------------|---------------------|---------------------------|
+  |     Clear         |       O(1)          |       O(1)                |
+  |-------------------|---------------------|---------------------------|
+  |     Containment   |       O(1)          |       O(1)                |
+  |-------------------|---------------------|---------------------------|
+  |     Copy          |       O(len(s))     |       O(len(s))           |
+  |-------------------|---------------------|---------------------------|
+  |     Create        |       O(len(s))     |       O(len(s))           |
+  |-------------------|---------------------|---------------------------|
+  |     Discard       |       O(1)          |       O(1)                |
+  |-------------------|---------------------|---------------------------|
+  |     Equality      |           O(min(len(s1),len(s2)))	              |
+  |-------------------|---------------------|---------------------------|
+  |     Iteration     |       O(N)          |       O(N)                |
+  |-------------------|---------------------|---------------------------|
+  |     Intersection  |           O(min(len(s1),len(s2)))	              |
+  |-------------------|---------------------|---------------------------|
+  |     isSubset      |       Olen(s1))     |       Olen(s1))           |
+  |-------------------|---------------------|---------------------------|
+  |     isSuperset    |       Olen(s1))     |       Olen(s1))           |
+  |-------------------|---------------------|---------------------------|
+  |     Pop           |       O(1)//O(N)    |       O(1)//O(N)          |
+  |-------------------|---------------------|---------------------------|
+  |     Union	        |  O(len(s1)+len(s2)) |       -                   |
+  |-------------------|---------------------|---------------------------|
+  |     len(s)	      |       O(1)          |       O(1)                |
+  |-------------------|---------------------|---------------------------|
 
+  
+- The methods union, intersection, difference and symmertic_difference will return new set. Correspondingly, udpate, intersection_update, difference_udpate and 
+  symmetric_difference_update methods will change the original set inplace.
 '''
-
+print("------------------Creating Sets--------------------------------")
 thisset = {"apple", "banana", "cherry"}
-print(thisset)
-print(len(thisset))
-print(type(thisset))
+print(thisset) # {'cherry', 'apple', 'banana'}
+print(len(thisset)) # 3
+print(type(thisset)) # <class 'set'>
 
 thisset = set(("apple", "banana", "cherry")) # note the double round-brackets
-print(thisset)
+print(thisset) # {'cherry', 'apple', 'banana'}
 
 empty_set = set()
-print("Empty List set set(): ",empty_set, len(empty_set), type(empty_set))
+print("Empty set using set(): ",empty_set, len(empty_set), type(empty_set)) # Empty set using set():  set() 0 <class 'set'>
 
 empty_set = {} # This is a dict
-print("Empty set Using {} (this will be a dict): ",empty_set, len(empty_set), type(empty_set))
+print("Empty set using {} (this will be a dict): ",empty_set, len(empty_set), type(empty_set)) # Empty set using {} (this will be a dict):  {} 0 <class 'dict'>
 
 set1 = {"apple", "banana", "cherry"}
 set2 = {1, 5, 7, 9, 3}
@@ -92,16 +129,27 @@ for x in thisset:
 # in/not in operator
 print("------------------in/not in--------------------------------")
 thisset = {"apple", "banana", "cherry"}
-print("banana" in thisset)
+print("banana" in thisset) # True
 
 thisset = {"apple", "banana", "cherry"}
-print("banana" not in thisset)
+print("banana" not in thisset) # False
 
 # add() method
 print("------------------add method--------------------------------")
 thisset = {"apple", "banana", "cherry"}
 thisset.add("orange")
-print(thisset)
+print(thisset) # {'apple', 'banana', 'cherry', 'orange'}
+
+thisset = {"apple", "banana", "cherry"}
+
+# copy() method
+print("------------------copy method--------------------------------")
+thisset = {"apple", "banana", "cherry"}
+copyset = thisset.copy()
+print(copyset) # {'cherry', 'banana', 'apple'}
+thisset.add("Kiwi")
+print(copyset) # {'cherry', 'banana', 'apple'}
+print(thisset) # {'Kiwi', 'apple', 'banana', 'cherry'}
 
 # update() method
 print("------------------update method--------------------------------")
@@ -110,14 +158,20 @@ tropical = {"pineapple", "mango", "papaya"}
 
 thisset.update(tropical)
 
-print(thisset)
+print(thisset) # {'apple', 'papaya', 'pineapple', 'mango', 'banana', 'cherry'}
 
 thisset = {"apple", "banana", "cherry"}
 mylist = ["kiwi", "orange"]
 
 thisset.update(mylist)
 
-print(thisset)
+print(thisset) # {'apple', 'banana', 'orange', 'cherry', 'kiwi'}
+
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+
+set1.update(set2)
+print(set1) # {1, 2, 'a', 3, 'b', 'c'}
 
 # remove() method
 print("------------------remove method--------------------------------")
@@ -129,20 +183,20 @@ print(thisset)
 print("------------------discard method--------------------------------")
 thisset = {"apple", "banana", "cherry"}
 thisset.discard("banana")
-print(thisset)
+print(thisset) # {'apple', 'cherry'}
 
 # pop() method
 print("------------------pop method--------------------------------")
 thisset = {"apple", "banana", "cherry"}
 x = thisset.pop()
-print(x)
-print(thisset)
+print(x) # apple
+print(thisset) # {'banana', 'cherry'}
 
 # clear() method
 print("------------------clear method--------------------------------")
 thisset = {"apple", "banana", "cherry"}
 thisset.clear()
-print(thisset)
+print(thisset) # set()
 
 # del keyword
 print("------------------del keyword--------------------------------")
@@ -155,13 +209,13 @@ set1 = {"a", "b", "c"}
 set2 = {1, 2, 3}
 
 set3 = set1.union(set2)
-print(set3)
+print(set3) # {1, 2, 'a', 3, 'b', 'c'}
 
 set1 = {"a", "b", "c"}
 set2 = {1, 2, 3}
 
 set3 = set1 | set2
-print(set3)
+print(set3) # {1, 2, 'a', 3, 'b', 'c'}
 
 set1 = {"a", "b", "c"}
 set2 = {1, 2, 3}
@@ -169,7 +223,7 @@ set3 = {"John", "Elena"}
 set4 = {"apple", "bananas", "cherry"}
 
 myset = set1.union(set2, set3, set4)
-print(myset)
+print(myset) # {'apple', 1, 2, 'a', 3, 'cherry', 'bananas', 'Elena', 'John', 'b', 'c'}
 
 set1 = {"a", "b", "c"}
 set2 = {1, 2, 3}
@@ -177,21 +231,13 @@ set3 = {"John", "Elena"}
 set4 = {"apple", "bananas", "cherry"}
 
 myset = set1 | set2 | set3 |set4
-print(myset)
+print(myset) # {'apple', 1, 2, 'a', 3, 'cherry', 'bananas', 'Elena', 'John', 'b', 'c'}
 
 x = {"a", "b", "c"}
 y = (1, 2, 3)
 
 z = x.union(y)
-print(z)
-
-# update method
-print("------------------ update method--------------------------------")
-set1 = {"a", "b" , "c"}
-set2 = {1, 2, 3}
-
-set1.update(set2)
-print(set1)
+print(z) # {1, 2, 'a', 3, 'b', 'c'}
 
 # intersection method
 print("------------------ intersection method--------------------------------")
@@ -199,30 +245,27 @@ set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
 
 set3 = set1.intersection(set2)
-print(set3)
+print(set3) # {'apple'}
 
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
 
 set3 = set1 & set2
-print(set3)
+print(set3) # {'apple'}
 
 x = {"a", "b", "c", 3}
 y = (1, 2, 3)
 
 z = x.intersection(y)
-print(z)
-
-set1 = {"apple", "banana", "cherry"}
-set2 = {"google", "microsoft", "apple"}
+print(z) # {3}
 
 # intersection_udpate method
 print("------------------ intersection_udpate method--------------------------------")
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
-print(set1, set2)
+print(set1, set2) # {'cherry', 'banana', 'apple'} {'microsoft', 'google', 'apple'}
 set1.intersection_update(set2)
-print(set1)
+print(set1) # {'apple'}
 
 # difference method
 print("------------------ difference method--------------------------------")
@@ -231,19 +274,19 @@ set2 = {"google", "microsoft", "apple"}
 
 set3 = set1.difference(set2)
 
-print(set3)
+print(set3) # {'banana', 'cherry'}
 
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
 
 set3 = set1 - set2
-print(set3)
+print(set3) # {'banana', 'cherry'}
 
 x = {"a", "b", "c"}
 y = ("a",1, 2, 3)
 
 z = x.difference(y)
-print(z)
+print(z) # {'b', 'c'}
 
 # difference_update method
 print("------------------ difference_update method--------------------------------")
@@ -252,7 +295,7 @@ set2 = {"google", "microsoft", "apple"}
 
 set1.difference_update(set2)
 
-print(set1)
+print(set1) # {'banana', 'cherry'}
 
 # symmetric_differences method
 print("------------------ symmetric_differences method--------------------------------")
@@ -261,13 +304,13 @@ set2 = {"google", "microsoft", "apple"}
 
 set3 = set1.symmetric_difference(set2)
 
-print(set3)
+print(set3) # {'banana', 'cherry', 'microsoft', 'google'}
 
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
 
 set3 = set1 ^ set2
-print(set3)
+print(set3) # {'banana', 'cherry', 'microsoft', 'google'}
 
 # symmetric_difference_update method
 print("------------------ symmetric_difference_update method--------------------------------")
@@ -276,25 +319,30 @@ set2 = {"google", "microsoft", "apple"}
 
 set1.symmetric_difference_update(set2)
 
-print(set1)
+print(set1) # {'banana', 'cherry', 'microsoft', 'google'}
 
 # isdisjoint method
 print("------------------ isdisjoint method--------------------------------")
 x = {"apple", "banana", "cherry"}
 y = {"google", "microsoft", "facebook"}
 z = x.isdisjoint(y)
-print(z)
+print(z) # True
+
+x = {"apple", "banana", "cherry"}
+y = {"apple", "microsoft", "facebook"}
+z = x.isdisjoint(y)
+print(z) # Flase
 
 # issubset method
 print("------------------ issubset method--------------------------------")
 x = {"a", "b", "c"}
 y = {"f", "e", "d", "c", "b", "a"}
 z = x.issubset(y)
-print(z)
+print(z) # True
 
 # issuperset method
 print("------------------ issuperset method--------------------------------")
 x = {"a", "b", "c"}
 y = {"f", "e", "d", "c", "b", "a"}
-z = y.issuperset(x)
+z = y.issuperset(x) # True
 print(z)

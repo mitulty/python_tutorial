@@ -15,7 +15,9 @@
 - ChainMap: It is a dictionary-like class which is able to make a single view of multiple mappings. It basically returns a list of several other 
   dictionaries.
 - Counter: It is a dictionary subclass which is used to count hashable objects.
-- OrderedDict: It is a dictionary subclass which remembers the order in which the entries were added. 
+
+- OrderedDict: It is a dictionary subclass which remembers the order in which the entries were added. It behaves like a hashh map like dictionary.
+
 - defaultdict: It is a dictionary subclass which calls a factory function to supply missing values. In general, it does not throw any errors when a 
   missing key value is called in a dictionary.
 - UserDict: This class acts as a wrapper around dictionary objects. The need for this class came from the necessity to subclass directly from dict. It 
@@ -23,7 +25,21 @@
 - UserList: This class acts like a wrapper around the list-objects. It is a useful base class for other lists like classes which can inherit from them and
   override the existing methods or even add fewer new ones as well.
 
+- Methods of deque:
+    -> append(x): Adds x to the right end of the deque.{O(1)}
+    -> appendleft(x): Adds x to the left end of the deque. {O(1)}
+    -> extend(iterable): Adds all elements from the iterable to the right end.{O(k)}
+    -> extendleft(iterable): Adds all elements from the iterable to the left end (in reverse order). {O(k)}
+    -> remove(value): Removes the first occurrence of the specified value from the deque. If value is not found, it raises a ValueError. {O(N)}
+    -> pop(): Removes and returns an element from the right end. {O(1)} 
+    -> popleft(): Removes and returns an element from the left end. {O(1)}
+    -> clear(): Removes all elements from the deque. {O(1)}
+    -> rotate(): Rotates the deque n steps to the right. If n is negative, rotates to the left. {O(k)}
+    -> count(value): Counts the number of occurrences of value in the deque. {O(N)}
+    -> index(value): Returns the index of the first occurrence of value in the deque. Raises ValueError if not found. {O(N)}
+    -> reverse(): Reverses the elements of the deque in place. {O(N)}
 
+- The bytearray() method returns a bytearray object in Python which is an array of given bytes. It gives a mutable sequence of integers in the range 0 <= x < 256. 
 '''
 from collections import namedtuple
 
@@ -86,7 +102,13 @@ a = [1,1,1,1,2,3,3,4,3,3,4]
 c = Counter(a)
 print(c)
 #the output will be Counter = ({1:4 , 2:1 , 3:4 , 4:2})
+# Creation of a Counter Class object using string as an iterable data container
+x = Counter("geeksforgeeks")
 
+# printing the elements of counter object
+for i in x.elements():
+    print (i, end = " ")
+print()
 
 from collections import OrderedDict
 od = OrderedDict()
@@ -99,7 +121,15 @@ od[6] = 'k'
 od[7] = 'a'
 print(od)
 #the output will be OrderedDict[(1 , 'e'), (2 , 'd') , (3 , 'u'), (4 , 'r'), (5 , 'e'), (6 , 'k'), (7 , 'a')]
-
+od.move_to_end(3)
+print(od)
+#the output will be OrderedDict[(1 , 'e'), (2 , 'd') , (4 , 'r'), (5 , 'e'), (6 , 'k'), (7 , 'a'), (3 , 'u')]
+od.popitem(last=True) 
+print(od)
+#the output will be OrderedDict[(1 , 'e'), (2 , 'd') , (4 , 'r'), (5 , 'e'), (6 , 'k'), (7 , 'a'), ]
+od.popitem(last=False) 
+print(od)
+#the output will be OrderedDict[(2 , 'd') , (4 , 'r'), (5 , 'e'), (6 , 'k'), (7 , 'a'), ]
 
 from collections import defaultdict
 d = defaultdict(int)
@@ -108,6 +138,15 @@ d[1] = 'edureka'
 d[2] = 'python'
 print(d[3])
 #it will give the output as 0 instead of keyerror.
+
+str = "Geeksforgeeks"
+ 
+# encoding the string with unicode 8 and 16
+array1 = bytearray(str, 'utf-8')
+array2 = bytearray(str, 'utf-16')
+ 
+print(array1)
+print(array2)
 
 def main():
     print("Hello, World!")

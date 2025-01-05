@@ -9,7 +9,7 @@
 - A hash map is a data structure that allows for quick insertion, deletion, and retrieval of data. It works by using a hash function to map a key to an 
   index in an array. 
 - Python dictionaries are the standard way to implement hash maps. They provide an efficient way to store and retrieve data based on keys.
-- The time complexity for lookups, insersins, and deletions in O(1). The insertion order is maintained.
+- The time complexity for lookups, insersins, and deletions is O(1). The insertion order is maintained.
 - Python's dictionaries handle collisions using a technique called open addressing with quadratic probing. When two keys hash to the same index, the 
   dictionary searches for the next available slot using a defined probing sequence.
 - Following are the perfomance benefits:

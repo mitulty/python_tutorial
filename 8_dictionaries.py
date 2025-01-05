@@ -44,9 +44,41 @@
 - The setdefault() method returns the value of the item with the specified key. If the key does not exist, insert the key, with the specified value.
 
 - The fromkeys() method returns a dictionary with the specified keys and the specified value.
-
+-
+  |-------------------|---------------------|---------------------------|
+  |   Operation       |    Average Case     |      Amortised Worst Case |
+  |-------------------|---------------------|---------------------------|
+  |      Clear        |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      Get          |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |    Iteration      |        O(N)         |         O(N)              |
+  |-------------------|---------------------|---------------------------|
+  |      Length       |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      pop()        |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      popitem()    |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      keys()       |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      values()     |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      items()      |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      update()     |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      clear()      |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |      copy()       |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+       del dict[key]  |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  |    key in dict    |        O(1)         |         O(1)              |
+  |-------------------|---------------------|---------------------------|
+  
 '''
-
+print("------------------Creating Dictionaries--------------------------------")
 thisdict = {
   "brand": "Ford",
   "model": "Mustang",
@@ -115,7 +147,6 @@ thisdict = {
 }
 if "model" in thisdict:
   print("Yes, 'model' is one of the keys in the thisdict dictionary")
-  
 
 # updating the dictionary
 print("-------------------------------updating the dictionary-------------------------")
@@ -126,6 +157,7 @@ thisdict = {
   "year": 1964
 }
 thisdict["year"] = 2018
+print(thisdict)
 
 thisdict = {
   "brand": "Ford",
@@ -133,6 +165,31 @@ thisdict = {
   "year": 1964
 }
 thisdict.update({"year": 2020})
+print(thisdict)
+
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict.update({"color": "red"})
+print(thisdict)
+
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict.update({"color": "red","country":"japan"})
+print(thisdict)
+
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict |= {"color": "yello","country":"korea"}
+print(thisdict)
 
 # adding a new element to the dictionary
 print("-------------------------------adding a new element to the dictionary-------------------------")
@@ -158,8 +215,9 @@ thisdict = {
   "model": "Mustang",
   "year": 1964
 }
-thisdict.pop("model")
+popped = thisdict.pop("model")
 print(thisdict)
+print(popped)
 
 # popitem() method
 print("-------------------------------popitem() method-------------------------")
@@ -264,4 +322,14 @@ x = ('key1', 'key2', 'key3')
 y = 0
 
 thisdict = dict.fromkeys(x, y)
+print(thisdict)
+
+z = ('key1', 'key2', 'key3')
+
+thisdict = dict.fromkeys(z)
+print(thisdict)
+
+w = ('key1', 'key2', 'key3')
+
+thisdict = dict.fromkeys(w,'unknown')
 print(thisdict)

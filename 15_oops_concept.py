@@ -4,14 +4,14 @@
 # @Description: OOP Concepts
 '''
 - Object-oriented programming aims to implement real-world entities like inheritance, hiding, polymorphism, etc. in programming. The main aim 
-  of OOPs is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that
-  function. It is an approach for modeling concrete, real world things. OOP models real-world entities as software objects that have some data 
-  associated with them and can perform certain operations.
+  of OOPs is to bind together the data and the functions that operate on them so that no other part of the code can access this data except those
+  functions. It is an approach for modeling concrete, real world things. OOP models real-world entities as software objects that have some data 
+  associated with them (also knwon as attributes) and can perform certain operations (called methods).
 - Object-oriented programming (OOP) is a method of structuring a program by bundling related properties and behaviors into individual objects.
 - Object-oriented programming is a programming paradigm that provides a means of structuring programs so that properties and behaviors are 
   bundled into individual objects. For example, an object could represent a person with properties like a name, age, and address and behaviors 
   such as walking, talking, breathing, and running. 
-- Almost everything in Python is an object, with its properties and methods. A Class is like an object constructor, or a "blueprint" for 
+- Almost everything in Python is an object, with its properties and behaviors. A Class is like an object constructor, or a "blueprint" for 
   creating objects. 
 - Classes allow to create user-defined data structures. Classes define functions called methods, which identify the behaviors and actions that 
   an object created from the class can perform with its data. A class is a blueprint for how to define something. It doesn't actually contain 
@@ -66,7 +66,7 @@
                          Python classes. 
     -> Class methods - These methods are associated with the class rather than an instance and can access and modify class-level data. A class 
                        method does not require a specific instance.
-    -> Static methods- These methods are similar to functions outside of the class and cannot access any instance or class data. They work like
+    -> Static methods - These methods are similar to functions outside of the class and cannot access any instance or class data. They work like
                        regular functions but belong to the class's (and every instance's) namespace. 
 
 - Static Methods: The @staticmethod decorator are used to define static methods that don't require access to the instance. Static methods do 
@@ -84,18 +84,19 @@
   object is garbage collected. 
 - The __dict__() methods gives the information about the attributes and methods of a class or an object.
 '''
-
+print("-----------------------------------Employee Class Example-------------------------------------------")
 class Employee:
     country = "India" # static variables/ class attributes
     count = 0 # static variables/ class attributes
     def __init__(self, name, age):
+        # self.__name =  name # This makes the name as a private instance attribute which can not be accessed outside the class. Line 108 will give an error.
         self.name =  name # instance attributes
-        self.age = age # instance attributes
+        self._age = age # instance attributes
         Employee.count +=1
         
   # Instance method
     def description(self):
-        return f"{self.name} is {self.age} years old"
+        return f"{self.name} is {self._age} years old"
 
     # Another instance method
     def from_country(self):
@@ -104,7 +105,7 @@ class Employee:
 employ1 = Employee("Balram", 35)
 
 
-print(Employee, "Name: ", employ1.name, "; Age: ",employ1.age, "; Origin: ",employ1.country)
+print(Employee, "Name: ", employ1.name, "; Age: ",employ1._age, "; Origin: ",employ1.country)
 print(employ1.description())
 print(employ1.from_country())
 print(Employee.description(employ1))
@@ -119,6 +120,7 @@ print(employ2.__dict__) # This does not have an instance attribute named country
 print(employ2.country) # Takes the class attributes
 print("Total number of employees: ", Employee.count)
 
+print("-----------------------------------Student Class Example-------------------------------------------")
 class Student:
     __age = None
     def __init__(self,age):
@@ -128,6 +130,7 @@ class Student:
 s = Student(20)
 # print(s.__age) # Error as __age is a private attribute and can not be accessed directly.
 
+print("-----------------------------------MyClass Class Example-------------------------------------------")
 class MyClass :
     __myField = None
     
@@ -147,12 +150,15 @@ obj.setMyField(42)
 value = obj.getMyField()
 print("Value of myField: ", value)
 
+print("-----------------------------------BankAccount Class Example-------------------------------------------")
 class BankAccount :
+    # Class Attributes/ Static Variables
     __accountNumber = None
     __accountHolder = None
     __balance = None
     
     def __init__(self, accountNumber, accountHolder): 
+        # self is not used as these are class attributes. Using self will create instance attributes and the class attributes will not be updated.
         BankAccount.__accountNumber = accountNumber
         BankAccount.__accountHolder = accountHolder
         BankAccount.__balance = 0
@@ -184,6 +190,7 @@ account.deposit(200)
 # Display the final account information
 account.getAccountInfo()
 
+print("-----------------------------------Counter Class Example-------------------------------------------")
 class Counter:
     __count = None
     
@@ -197,6 +204,8 @@ class Counter:
     # Getter Function
     def getCount(self): 
         return self.__count
+    
+    #Class Method
     @classmethod
     def print_class_attr(cls):
       print(cls.__count)
@@ -209,6 +218,7 @@ c1.increment()
 print(c2.getCount())
 Counter.print_class_attr()
 
+print("-----------------------------------Rectangle Class Example-------------------------------------------")
 class Rectangle:
     def __init__(self):
         self.length = 0
@@ -228,6 +238,7 @@ r.breadth = 23 #int(input())
 r.area()
 r.perimeter()
 
+print("-----------------------------------MyClass Class Example-------------------------------------------")
 # Copy Constructor
 class MyClass:
     def __init__(self, attribute1, attribute2):
@@ -246,10 +257,20 @@ original_obj = MyClass("value1", "value2")
 # Using the copy constructor to create a new object
 copied_obj = original_obj.__copy__()
 
+#This is a shallow Coppy
+print(id(copied_obj),id(original_obj))
+print(id(copied_obj.attribute1),id(original_obj.attribute1))
 # Displaying the attributes of the original and copied objects
 print("Original Object: attribute1={}, attribute2={}".format(original_obj.attribute1, original_obj.attribute2))
 print("Copied Object: attribute1={}, attribute2={}".format(copied_obj.attribute1, copied_obj.attribute2))
 
+original_obj.attribute1 += "new value"
+# Displaying the attributes of the original and copied objects
+print("Original Object: attribute1={}, attribute2={}".format(original_obj.attribute1, original_obj.attribute2))
+print("Copied Object: attribute1={}, attribute2={}".format(copied_obj.attribute1, copied_obj.attribute2))
+print(id(copied_obj.attribute1),id(original_obj.attribute1))
+
+print("-----------------------------------MyClass Class Example-------------------------------------------")
 class MyClass:
     static_variable = 0
     # These will not work
@@ -264,6 +285,7 @@ print(MyClass.static_variable)
 var = MyClass(13)
 print(MyClass.static_variable)
 
+print("-----------------------------------MyClass Class Example-------------------------------------------")
 class MyClass:
     @staticmethod
     def static_method():
@@ -272,6 +294,7 @@ class MyClass:
 # Calling the static method
 MyClass.static_method()
 
+print("-----------------------------------BankAcount Class Example-------------------------------------------")
 class BankAccount:
     total_balance = 0
 
@@ -287,6 +310,7 @@ account2 = BankAccount(amount2)
 
 print(BankAccount.total_balance)
 
+print("-----------------------------------MathUtils Class Example-------------------------------------------")
 class MathUtils:
     @staticmethod
     def square(num):
@@ -307,6 +331,7 @@ print("Square of 5 is:", squared_value)
 factorial_value = MathUtils.factorial(5)
 print("Factorial of 5 is:", factorial_value)
 
+print("-----------------------------------Circle Class Example-------------------------------------------")
 class Circle:
     def __init__(self, radius=1.0):
         self.radius = radius
@@ -323,6 +348,7 @@ print("The area of circle c1 is", c1.get_area())
 c2 = Circle(5.0)
 print("The area of circle c2 is", c2.get_area())
 
+print("-----------------------------------Cricket Class Example-------------------------------------------")
 ### Methods in Python Classes.
 # instance methods
 class Cricket:
@@ -337,7 +363,8 @@ class Cricket:
 c = Cricket()
 c.setTeamName('India')
 print(c.getTeamName())
-
+print(Cricket.teamName)
+print("-----------------------------------Cricket Class Example-------------------------------------------")
 # class method
 class Cricket:
   teamName = 'India'
@@ -351,6 +378,7 @@ print("Class Method using object: ",c.getTeamName())
 print("Class Method using class: ",Cricket.getTeamName())
 # print("Class Method using class: ",Cricket.getTeamName(c)) ## error
 
+print("-----------------------------------Cricket Class Example-------------------------------------------")
 # static method
 class Cricket:
     teamName = 'India'  
@@ -364,6 +392,7 @@ c1.utility()
 
 Cricket.utility()
 
+print("-----------------------------------Employee Class Example-------------------------------------------")
 # Python program to illustrate destructor
 class Employee:
 
@@ -377,6 +406,8 @@ class Employee:
 
 obj = Employee()
 del obj
+
+print("-----------------------------------RecursiveFunction Class Example-------------------------------------------")
 
 class RecursiveFunction:
     def __init__(self, n):

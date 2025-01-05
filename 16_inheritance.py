@@ -79,6 +79,7 @@
 - For a diamond inheritance where B and C inherits from A and D inherits from B and C the MRO is D-> B-> C-> A. The super() call always follow the MRO.
 - To get the method resolution order of a class either __mro__ attribute or mro() method can be used.
 '''
+print("-----------------------------------Person Class Example-------------------------------------------")
 class Person:
   def __init__(self, fname, lname):
     self.firstname = fname
@@ -91,6 +92,7 @@ class Person:
 x = Person("John", "Doe")
 x.printname()
 
+print("-----------------------------------Student Class Example-------------------------------------------")
 class Student(Person):
     pass
 
@@ -126,6 +128,7 @@ class Student(Person):
     def welcome(self):
         print("Welcome", self.firstname, self.lastname, "to the class of", self.graduationyear)
 
+print("-----------------------------------Single Inheritance Example-------------------------------------------")
 ## Single Inheritance
 # Base class
 class Animal:
@@ -146,6 +149,7 @@ dog_instance = Dog("Buddy")
 # Calling methods from the base and derived classes
 dog_instance.speak()  # This will call the overridden method in Dog class
 
+print("-----------------------------------Multilevel Inheritance Example-------------------------------------------")
 ## Multilevel Inheritance
 class Animal:
     def __init__(self, name):
@@ -175,6 +179,7 @@ labrador.speak()    # Output: Max makes a sound.
 labrador.bark()     # Output: Max barks.
 labrador.swim()     # Output: Max can swim.
 
+print("-----------------------------------Hierarchical Inheritance Example-------------------------------------------")
 ## Hierarchical inheritance
 class Animal:
     def __init__(self, name):
@@ -205,6 +210,7 @@ print(dog.speak())   # Output: Buddy says Woof!
 print(cat.speak())   # Output: Whiskers says Meow!
 print(bird.speak())  # Output: Tweetie sings beautifully!
 
+print("-----------------------------------Multiple Inheritance Example-------------------------------------------")
 ## Multiple Inheritance
 class Animal:
     def __init__(self, name):
@@ -236,7 +242,7 @@ print(parrot.fly())    # Output: Parrot is flying!
 print(bat.speak())     # Output: Bat says Squeak!
 print(bat.fly())       # Output: Bat is flying!
 
-
+print("-----------------------------------Hybrid Inheritance Example-------------------------------------------")
 ## Hybrid
 # Base class
 class Animal:
@@ -267,7 +273,7 @@ print(platypus_obj.speak())        # Output: Perry says Quack!
 print(platypus_obj.give_birth())   # Output: Perry is giving birth to live young.
 print(platypus_obj.lay_eggs())     # Output: Perry is laying eggs.
 
-
+print("-----------------------------------Method Overriding Example-------------------------------------------")
 ## Method Overriding
 # Base class
 class Animal:
@@ -290,6 +296,7 @@ animal2 = Cat()
 animal1.make_sound()  # Calls Dog's make_sound method
 animal2.make_sound()  # Calls Cat's make_sound method
 
+print("-----------------------------------Vehicle Class Example-------------------------------------------")
 ##Vehicle class Hierarchy
 # Base class
 class Vehicle:
@@ -324,6 +331,7 @@ my_car.start()
 my_car.honk()
 my_car.stop()
 
+print("-----------------------------------Hierarchical Inheritance in Vehicle Class Example-------------------------------------------")
 ##Hierarchical Inheritance in Vehicle Classes
 # Base class
 class Vehicle:
@@ -367,6 +375,7 @@ my_motorcycle.start()
 my_motorcycle.wheelie()
 my_motorcycle.stop()
 
+print("-----------------------------------Animla Class Inheritance Example-------------------------------------------")
 ## Animal class inheritance
 # Base class Animal
 class Animal:
@@ -393,6 +402,7 @@ my_dog = Dog(name, breed)
 # Display information about the Dog
 my_dog.display_info()
 
+print("-----------------------------------Student Class Inheritance Example-------------------------------------------")
 ## Student and Postgraduate
 # Base class
 class Student:
@@ -434,9 +444,8 @@ student.display_details()
 print()
 postgraduate.display_details()
 
-
+print("-----------------------------------Multiple Inheritance Family Class Example-------------------------------------------")
 ### Examples of Multiple Inheritance
-
 # creating class for father
 class Dad():
 	# writing a method for parent class 1
@@ -461,6 +470,7 @@ child.singing()
 child.coding()
 child.playing()		
 
+print("-----------------------------------Diamond Problem in Multiple Inheritance Example-------------------------------------------")
 ## The Diamond Problem
 class Person:
 	def display(self):
@@ -480,6 +490,7 @@ class Child(Father, Mother):
 child_obj = Child()
 child_obj.display()
 
+print("-----------------------------------Using super() Example-------------------------------------------")
 ## Using super()
 # creating person class 
 class Person():
@@ -584,6 +595,8 @@ child_object.function()
 
 print("MRO of Child: ",ChildClass.mro())
 print("MRO of Child: ",ChildClass.__mro__)
+
+print("-----------------------------------Tokenizer Class Example-------------------------------------------")
 class Tokenizer:
     """Tokenize text"""
     def __init__(self, text):

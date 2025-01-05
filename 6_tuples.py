@@ -12,7 +12,7 @@
 - To create a tuple with only one item, a comma is added after the item, otherwise Python will not recognize it as a tuple.
 - Tuple items can be of any data type. A tuple can contain different data types. It is also possible to use the tuple() constructor to make a tuple.
 
-- Tuple items can be accessed using the indexs inside the square brackets. The first item has index zero. Negative indexing means start from the end.
+- Tuple items can be accessed using the indexes inside the square brackets. The first item has index zero. Negative indexing means start from the end.
 - A range of indexes can be specified by specifying where to start and where to end the range. When specifying a range, the return value will be a new tuple with the 
   specified items. 
 - By leaving out the start value, the range will start at the first item. By leaving out the end value, the range will go on to the end of the list. Specifing negative
@@ -34,54 +34,78 @@
 - Python has two built-in methods that can be used on tuples.
 - The count() method returns the number of times a specified value appears in the tuple.
 - The index() method finds the first occurrence of the specified value. It raises an exception if the value is not found.
+-
+  |-------------------|---------------------|---------------------------|
+  |   Operation       |    Average Case     |      Amortised Worst Case |
+  |-------------------|---------------------|---------------------------|
+  | Access using Index|     O(1)            |       O(1)                |
+  |-------------------|---------------------|---------------------------|
+  |    Slicing        |     O(k)            |       O(k)                |
+  |-------------------|---------------------|---------------------------|
+  |    Concatenation  |     O(k)            |       O(k)                |
+  |-------------------|---------------------|---------------------------|
+  |    Index          |     O(N)            |       O(N)                |
+  |-------------------|---------------------|---------------------------|
+  |    Count          |     O(N)            |       O(N)                |  
+  |-------------------|---------------------|---------------------------|
+  |    Iterate        |     O(N)            |       O(N)                |
+  |-------------------|---------------------|---------------------------|
+  |    Search         |     O(N)            |       O(N)                |
+  |-------------------|---------------------|---------------------------|
 
 '''
-
+print("------------------Creating Tuples--------------------------------")
 thistuple = ("apple", "banana", "cherry")
-print(thistuple)
+print(thistuple) # ('apple', 'banana', 'cherry')
 
 thistuple = ("apple", "banana", "cherry", "apple", "cherry")
-print(thistuple)
-print(len(thistuple))
+print(thistuple) # ('apple', 'banana', 'cherry', 'apple', 'cherry')
+print(len(thistuple)) # 5
 
 thistuple = ("apple",)
-print(type(thistuple))
+print(type(thistuple)) # <class 'tuple'>
 
 #NOT a tuple
 thistuple = ("apple")
-print(type(thistuple))
+print(type(thistuple)) # <class 'str'>
 
 tuple1 = ("abc", 34, True, 40, "male")
 
 thistuple = tuple(("apple", "banana", "cherry")) # note the double round-brackets
-print(thistuple)
+print(thistuple) # ('apple', 'banana', 'cherry')
 
 empty_tuple = tuple()
-print("Empty List Tuple tuple(): ",empty_tuple, len(empty_tuple), type(empty_tuple))
+print("Empty List Tuple tuple(): ",empty_tuple, len(empty_tuple), type(empty_tuple)) # Empty List Tuple tuple():  () 0 <class 'tuple'>
 
 empty_tuple = ()
-print("Empty Tuple Using (): ",empty_tuple, len(empty_tuple), type(empty_tuple))
+print("Empty Tuple Using (): ",empty_tuple, len(empty_tuple), type(empty_tuple)) # Empty Tuple Using ():  () 0 <class 'tuple'>
 
 # indexing and slicing tuples
 print("------------------Indexin and Slicing--------------------------------")
 thistuple = ("apple", "banana", "cherry")
-print(thistuple[1])
+print(thistuple[1]) # banana
 
 thistuple = ("apple", "banana", "cherry")
-print(thistuple[-1])
+print(thistuple[-1]) # cherry
 
 thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
-print(thistuple[:4])
+print(thistuple[:4]) # ('apple', 'banana', 'cherry', 'orange')
 
 thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
-print(thistuple[2:])
+print(thistuple[2:]) # ('cherry', 'orange', 'kiwi', 'melon', 'mango')
 
 thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
-print(thistuple[-4:-1])
+print(thistuple[-4:-1]) # ('orange', 'kiwi', 'melon')
+
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[-4:-8]) # ()
+
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[-4:-8:-1]) #('orange', 'cherry', 'banana')
 
 thistuple = ("apple", "banana", "cherry")
 if "apple" in thistuple:
-  print("Yes, 'apple' is in the fruits tuple")
+  print("Yes, 'apple' is in the fruits tuple") # Yes, 'apple' is in the fruits tuple
   
 # updating tuples using lists
 print("------------------Updating Tuples--------------------------------")
@@ -89,19 +113,19 @@ thistuple = ("apple", "banana", "cherry")
 y = list(thistuple)
 y.append("orange")
 thistuple = tuple(y)
-print(thistuple)
+print(thistuple) # ('apple', 'banana', 'cherry', 'orange')
 
 thistuple = ("apple", "banana", "cherry")
 y = list(thistuple)
 y.remove("apple")
 thistuple = tuple(y)
-print(thistuple)
+print(thistuple) # ('banana', 'cherry')
 
 thistuple = ("apple", "banana", "cherry")
 y = ("orange",)
 thistuple += y
 
-print(thistuple)
+print(thistuple) ('apple', 'banana', 'cherry', 'orange')
 
 del thistuple
 
@@ -114,17 +138,17 @@ fruits = ("apple", "banana", "cherry")
 
 (green, yellow, red) = fruits
 
-print(green)
-print(yellow)
-print(red)
+print(green) # apple
+print(yellow) # banana
+print(red) # cherry
 
 fruits = ("apple", "banana", "cherry", "strawberry", "raspberry")
 
 (green, yellow, *red) = fruits
 
-print(green)
-print(yellow)
-print(red)
+print(green) # apple
+print(yellow) # banana
+print(red) # ['cherry', 'strawberry', 'raspberry']
 
 # Looping
 print("------------------Looping Tuples--------------------------------")
@@ -150,22 +174,22 @@ tuple1 = ("a", "b" , "c")
 tuple2 = (1, 2, 3)
 
 tuple3 = tuple1 + tuple2
-print(tuple3)
+print(tuple3) # ('a', 'b', 'c', 1, 2, 3)
 
 fruits = ("apple", "banana", "cherry")
 mytuple = fruits * 2
 
-print(mytuple)
+print(mytuple) # ('apple', 'banana', 'cherry', 'apple', 'banana', 'cherry')
 
 
 # count method
 print("------------------ count method --------------------------------")
 thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)
 x = thistuple.count(5)
-print(x)
+print(x) # 2
 
 # index method
 print("------------------ index method --------------------------------")
 thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)
 x = thistuple.index(8)
-print(x)
+print(x) # 3

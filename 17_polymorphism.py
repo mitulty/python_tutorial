@@ -31,6 +31,7 @@
   keyword is used to call the overridden method from the superclass within the overridden method of the subclass.
 
 '''
+print("-----------------------------------Method Overloading-------------------------------------------")
 class MyClass:
 # This will result in an error in Python
     # def add(self, a, b):
@@ -44,6 +45,7 @@ class MyClass:
         else:
             return a+b 
 
+print("-----------------------------------Method Overriding-------------------------------------------")
 class Animal:
     def make_sound(self):
         return "Some generic sound"
@@ -63,6 +65,7 @@ cat = Cat()
 print(dog.make_sound())  # Output: Woof!
 print(cat.make_sound())  # Output: Meow!
 
+print("-----------------------------------Method Overloading Example-------------------------------------------")
 ### Method Overloading
 ## Using Default Paramters
 class MyClass:
@@ -141,7 +144,7 @@ rectangle_area = ShapeCalculator.calculate_area(length, width)
 print(square_area)
 print(rectangle_area)
 
-
+print("-----------------------------------Method Overriding Example-------------------------------------------")
 ### Method Overriding
 class Animal:
     def make_sound(self):
