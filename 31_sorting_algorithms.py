@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Author: Mitul Tyagi
 # @Date:   2024-12-31 12:11:51
-# @Description: 
+# @Description: Ananlysis of Sorting Algorithms
 '''
 - A sorting algorithm is used to arrange elements of an array/list in a specific order. A sorting algorithm is considered stable if the two or more items with the 
   same value maintain the same relative positions even after sorting. This is widely used in different applications that include searching algorithms, data structure
