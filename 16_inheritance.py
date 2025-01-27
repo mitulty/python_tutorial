@@ -65,18 +65,19 @@
                             # features of SuperClass1 + SuperClass2 + MultiDerived class
 - The diamond problem is a typical problem that is faced in multiple inheritance in Python. It is essentially an ambiguity that is arisen when there
   are two classes say B and C that inherit / are derived from a single class A, and there is another class D, that is a class derived from multiple 
-  inheritance and inherits from B as well as C. This ambiguity is resolved using method resolution order.  This method resolution order is essentially
-  an order in which a particular method is searched for in the hierarchy of classes in the case of inheritance.
+  inheritance and inherits from B as well as C. This ambiguity is resolved using method resolution order.  This method resolution order is 
+  essentially an order in which a particular method is searched for in the hierarchy of classes in the case of inheritance.
 - In the case of multiple inheritance, a given attribute is first searched in the current class if it's not found then it's searched in the parent 
   classes. The parent classes are searched in a left-right fashion and each class is searched once.
 
-- Method Resolution Order(MRO) it denotes the way a programming language resolves a method or attribute. Python supports classes inheriting from other
-  classes. The class being inherited is called the Parent or Superclass, while the class that inherits is called the Child or Subclass. In python, 
-  method resolution order defines the order in which the base classes are searched when executing a method. First, the method or attribute is searched 
-  within a class and then it follows the order specified while inheriting. This order is also called Linearization of a class and set of rules are called
-  MRO(Method Resolution Order). While inheriting from another class, the interpreter needs a way to resolve the methods that are being called via an 
-  instance.
-- For a diamond inheritance where B and C inherits from A and D inherits from B and C the MRO is D-> B-> C-> A. The super() call always follow the MRO.
+- Method Resolution Order(MRO) it denotes the way a programming language resolves a method or attribute. Python supports classes inheriting from 
+  other classes. The class being inherited is called the Parent or Superclass, while the class that inherits is called the Child or Subclass. In 
+  python, method resolution order defines the order in which the base classes are searched when executing a method. First, the method or attribute 
+  is searched within a class and then it follows the order specified while inheriting. This order is also called Linearization of a class and set of 
+  rules are called MRO(Method Resolution Order). While inheriting from another class, the interpreter needs a way to resolve the methods that are 
+  being called via an instance.
+- For a diamond inheritance where B and C inherits from A and D inherits from B and C the MRO is D-> B-> C-> A. The super() call always follow the 
+  MRO.
 - To get the method resolution order of a class either __mro__ attribute or mro() method can be used.
 '''
 print("-----------------------------------Person Class Example-------------------------------------------")
@@ -375,7 +376,7 @@ my_motorcycle.start()
 my_motorcycle.wheelie()
 my_motorcycle.stop()
 
-print("-----------------------------------Animla Class Inheritance Example-------------------------------------------")
+print("-----------------------------------Animal Class Inheritance Example-------------------------------------------")
 ## Animal class inheritance
 # Base class Animal
 class Animal:

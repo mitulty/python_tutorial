@@ -3,11 +3,11 @@
 # @Date:   2024-12-05 23:48:51
 # @Description: Aggregation
 '''
-- Aggregation is a form of object composition in which one class contains or is composed of one or more objects of another class. Aggregation represents 
-  a "has-a" relationship between classes. It implies that one class (the whole or container) has objects of another class (the part or component). It
-  enables the creation of complex objects by combining simpler objects.
-- In Python, objects can be passed as parameters to functions or methods, allowing to manipulate or interact with those objects within the function. When 
-  an object is passed as a parameter, the function receives a reference to the object, allowing it to access and modify the object's attributes.
+- Aggregation is a form of object composition in which one class contains or is composed of one or more objects of another class. Aggregation 
+  represents a "has-a" relationship between classes. It implies that one class (the whole or container) has objects of another class (the part or 
+  component). It enables the creation of complex objects by combining simpler objects.
+- In Python, objects can be passed as parameters to functions or methods, allowing to manipulate or interact with those objects within the function. 
+  When an object is passed as a parameter, the function receives a reference to the object, allowing it to access and modify the object's attributes.
 '''
 
 class Address:

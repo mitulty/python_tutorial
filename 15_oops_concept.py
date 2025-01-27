@@ -105,13 +105,14 @@ class Employee:
 employ1 = Employee("Balram", 35)
 
 
+# print(Employee, "Name: ", employ1.__name, "; Age: ",employ1._age, "; Origin: ",employ1.country)
 print(Employee, "Name: ", employ1.name, "; Age: ",employ1._age, "; Origin: ",employ1.country)
 print(employ1.description())
 print(employ1.from_country())
 print(Employee.description(employ1))
 
 employ1.country = "Japan" # This creates a new instance attribute for employ1
-Employee.country = "China" # This changes the country for all the instances to China
+Employee.country = "USA" # This changes the country for all the instances to USA
 print(employ1.__dict__)
 print(Employee.__dict__)
 
@@ -148,7 +149,11 @@ obj = MyClass()
 obj.setMyField(42)
 # Using the getter method to retrieve the value of myField
 value = obj.getMyField()
-print("Value of myField: ", value)
+print("Value of myField in obj: ", value)
+anotherObj = MyClass()
+value = anotherObj.getMyField()
+print("Value of myField in anotherObj: ", value)
+
 
 print("-----------------------------------BankAccount Class Example-------------------------------------------")
 class BankAccount :
@@ -264,7 +269,7 @@ print(id(copied_obj.attribute1),id(original_obj.attribute1))
 print("Original Object: attribute1={}, attribute2={}".format(original_obj.attribute1, original_obj.attribute2))
 print("Copied Object: attribute1={}, attribute2={}".format(copied_obj.attribute1, copied_obj.attribute2))
 
-original_obj.attribute1 += "new value"
+original_obj.attribute1 = "value3"
 # Displaying the attributes of the original and copied objects
 print("Original Object: attribute1={}, attribute2={}".format(original_obj.attribute1, original_obj.attribute2))
 print("Copied Object: attribute1={}, attribute2={}".format(copied_obj.attribute1, copied_obj.attribute2))
